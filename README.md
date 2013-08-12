@@ -6,6 +6,11 @@ This is intended mainly for command that you use frequently, but not frequently 
 
 `cheats` was inspired by [`cheat`](htps://github.com/chrisallenlane/cheat) by chrisallenlane, although it contains none of its code.
 
+Installation
+------------
+
+Put `cheats.sh` somewhere and source it on bash startup (for example, `echo -en '\n\n' | cat - cheats.sh >> ~/.bashrc`), then copy the cheats folder into your home folder (`cp cheats ~/.cheats`).
+
 Usage
 -----
 
