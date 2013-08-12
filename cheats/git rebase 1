@@ -1,0 +1,2 @@
+Rebase all commits since the last push to upstream
+git rebase -i $(git rev-parse @{u})
