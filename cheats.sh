@@ -29,7 +29,7 @@ function cheats
 function __run_cheat
 {
     local file="$@";
-    head -n 1 "$file"; # print first line: description
+    head -n 2 "$file"; # print first and second line: description and command
     local command=$(sed -n '2p' < "$file"); # read second line: command
     for line in "$(tail -n +3 "$file")" # skip the first two lines
     do
