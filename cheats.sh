@@ -1,15 +1,17 @@
 function cheats {
-    if [[ -f "$@" ]]; then
-        __run_cheat "$@"; # mainly for debugging: absolute paths outside of ~/.cheats
+    if [[ -f "$*" ]]; then
+        __run_cheat "$*"; # mainly for debugging: absolute paths outside of ~/.cheats
     else
-        if [[ -f "~/.cheats/$@" ]]; then
-            __run_cheat "~/.cheats/$@";
+        IFS=' ';
+        if [[ -f "$HOME/.cheats/$*" ]]; then
+            __run_cheat "$HOME/.cheats/$*";
+            unset IFS;
         else
             local visited="false";
             IFS=$(echo -en "\n\b"); # separate only by newlines in the for loop
-            for file in $(find -L ~/.cheats/ -iname "$@*"); do
-                if [[ $visited = "true" ]]; then
-                    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; # print a separator line with the width of the console
+            for file in $(IFS=' '; find -L ~/.cheats/ -name "$**" -type f); do
+                if [[ "$visited" = "true" ]]; then
+                    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '-'; # print a separator line with the width of the console
                 fi
                 tput bold; # print filename in bold
                 basename "$file"; # print just the filename
@@ -19,14 +21,14 @@ function cheats {
             done
             unset IFS;
             if [[ $visited = "false" ]]; then
-                echo "No cheats with prefix \"$@\" found in ~/.cheats";
+                echo "No cheats with prefix \"$*\" found in ~/.cheats";
             fi
         fi
     fi
 }
 
 function __run_cheat {
-    local file="$@";
+    local file="$*";
     head -n 2 "$file"; # print first and second line: description and command
     local command=$(sed -n '2p' < "$file"); # read second line: command
     for line in "$(tail -n +3 "$file")"; do # skip the first two lines
