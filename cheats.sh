@@ -39,7 +39,7 @@ function __run_cheat {
         command=$(echo "$command" | sed "s/\$$name/$REPLY/"); # replace the variable in the command
     done
     __print_separator_line;
-    $command;
+    eval "$command";
 }
 
 function __print_separator_line {
