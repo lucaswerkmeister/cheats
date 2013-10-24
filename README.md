@@ -52,7 +52,7 @@ System requirements
 `cheats` was written for `bash`.
 
   * `sh`: Doesn't work at all. Even if you fix the easy stuff (`function x` -> `x()`, `[[ ... ]]` -> `[ ... ]`), it still does some weird stuff so that the filenames are messed up. Not sure why.
-  * `zsh`: Works as long as there is only one argument; invoke with `cheats "git commit 1"` instead of `cheats git commit 1`. There's probably a simple fix if you know `zsh`, but I don't.
+  * `zsh`: *Kinda* works. I don't know the specifics of `zsh`, so I can't fix it. If you can, off to CONTRIBUTORS.md with you!
   * `csh`, `ksh`: Doesn't work at all. I also have no knowledge of these shells, so I don't know if it even could work.
 
-Other than your shell, the following commands are used: `printf`, `basename`, `head`, `tail`, `sed`. For `dpkg`: With the exception of `sed`, they are all part of `coreutils`. `sed` is part of package `sed`.
+Other than your shell, the following commands are used: `printf`, `basename`, `head`, `tail`, `sed`, `grep`. For `dpkg`: `sed` and `grep` are in their own packagis, they rest are part of `coreutils`.
