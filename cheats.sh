@@ -11,7 +11,7 @@ function cheats {
             IFS=$(echo -en "\n\b"); # separate only by newlines in the for loop
             for file in $(IFS=' '; find -L ~/.cheats/ -name "$**" -type f); do
                 if [[ "$visited" = "true" ]]; then
-                    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '-'; # print a separator line with the width of the console
+		    __print_separator_line;
                 fi
                 tput bold; # print filename in bold
                 basename "$file"; # print just the filename
@@ -38,7 +38,12 @@ function __run_cheat {
         read -p "$prompt$PS2";
         command=$(echo "$command" | sed "s/\$$name/$REPLY/"); # replace the variable in the command
     done
+    __print_separator_line;
     $command;
+}
+
+function __print_separator_line {
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '-'; # print a separator line with the width of the console
 }
 
 # bash completion
