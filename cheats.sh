@@ -40,3 +40,15 @@ function __run_cheat {
     done
     $command;
 }
+
+# bash completion
+function _cheats {
+    if [[ ! -d ~/.cheats ]]; then
+        return 0;
+    fi
+    IFS='
+';
+    COMPREPLY=( $(ls -1 ~/.cheats | grep -e "^${COMP_WORDS[COMP_CWORD]}") );
+    unset IFS;
+}
+complete -F _cheats cheats;
