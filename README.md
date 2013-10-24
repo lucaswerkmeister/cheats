@@ -52,7 +52,7 @@ System requirements
 `cheats` was written for `bash`.
 
   * `sh`: Doesn't work at all. Even if you fix the easy stuff (`function x` -> `x()`, `[[ ... ]]` -> `[ ... ]`), it still does some weird stuff so that the filenames are messed up. Not sure why.
-  * `zsh`: *Kinda* works. I don't know the specifics of `zsh`, so I can't fix it. If you can, off to CONTRIBUTORS.md with you!
+  * `zsh`: *Kinda* works. I don't know the specifics of `zsh`, so I can't fix it. If you can, off to CONTRIBUTING.md with you!
   * `csh`, `ksh`: Doesn't work at all. I also have no knowledge of these shells, so I don't know if it even could work.
 
 Other than your shell, the following commands are used: `printf`, `basename`, `head`, `tail`, `sed`, `grep`. For `dpkg`: `sed` and `grep` are in their own packagis, they rest are part of `coreutils`.
