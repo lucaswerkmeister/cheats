@@ -1,2 +1,2 @@
 Perform a full update/upgrade of your portage tree
-sudo emerge --sync; time sudo emerge --ask --verbose --update --deep --newuse world;
+sudo emerge --sync; time sudo emerge --ask --verbose --update --deep --newuse @world;
