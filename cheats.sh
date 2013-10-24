@@ -14,9 +14,9 @@ function cheats {
 		    __print_separator_line;
                 fi
                 tput bold; # print filename in bold
-                basename "$file"; # print just the filename
+                basename -- "$file"; # print just the filename
                 tput sgr0; # reset
-                head -n 2 "$file"; # print the first two lines: description and command
+                head -n 2 -- "$file"; # print the first two lines: description and command
                 visited="true";
             done
             unset IFS;
@@ -29,7 +29,7 @@ function cheats {
 
 function __run_cheat {
     local file="$*";
-    head -n 2 "$file"; # print first and second line: description and command
+    head -n 2 -- "$file"; # print first and second line: description and command
     local command=$(sed -n '2p' < "$file"); # read second line: command
     for line in "$(tail -n +3 "$file")"; do # skip the first two lines
         [[ "$line" = "" ]] && continue;
