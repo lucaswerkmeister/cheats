@@ -56,4 +56,4 @@ System requirements
   * `zsh`: *Kinda* works. I don't know the specifics of `zsh`, so I can't fix it. If you can, off to CONTRIBUTING.md with you!
   * `csh`, `ksh`: Doesn't work at all. I also have no knowledge of these shells, so I don't know if it even could work.
 
-Other than your shell, the following commands are used: `printf`, `basename`, `head`, `tail`, `sed`, `grep`. For `dpkg`: `sed` and `grep` are in their own packages, they rest are part of `coreutils`.
+Other than your shell, the following commands are used: `printf`, `basename`, `head`, `tail`, `sed`, `grep`. For `dpkg`: `sed` and `grep` are in their own packages, the rest are part of `coreutils`.
