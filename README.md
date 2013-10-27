@@ -24,6 +24,7 @@ Usage
     dd if=$file of=/dev/cdrom
     $ cheats dd 1
     Backup your primary drive
+    dd if=/dev/sda of=$backup
     Backup file path> [prompt]
     [dd runs]
 
