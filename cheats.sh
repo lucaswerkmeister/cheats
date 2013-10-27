@@ -30,9 +30,9 @@ function cheats {
 function __run_cheat {
     local file="$*";
     head -n 2 -- "$file"; # print first and second line: description and command
-    local command=$(sed -n '2p' < "$file"); # read second line: command
-    for line in "$(tail -n +3 "$file")"; do # skip the first two lines
-        [[ "$line" = "" ]] && continue;
+    local command=$(sed -n '2p' -- "$file"); # read second line: command
+    for line in "$(tail -n +3 -- "$file")"; do # skip the first two lines
+        [[ "$line" = [[:space:]] ]] && continue;
         local prompt="$(echo "$line" | sed 's/[^:]*:\(.*\)/\1/')";
         local name=$(echo "$line" | sed 's/\([^:]*\):.*/\1/');
         read -p "$prompt$PS2";
