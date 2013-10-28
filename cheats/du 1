@@ -1,0 +1,3 @@
+Show size of a folder
+du -sh $folder
+folder:The folder
