@@ -1,0 +1,3 @@
+Create a new branch and move to it
+git checkout -b $branchname
+branchname:Name of the new branch

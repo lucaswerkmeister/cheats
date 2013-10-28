@@ -1,0 +1,3 @@
+Move the current branch to a different commit
+git checkout -B "$(git rev-parse --abbrev-ref HEAD)" "$commit"
+commit:A "commitish" (SHA-1 hash, branch name, tag, ...)
