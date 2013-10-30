@@ -50,10 +50,10 @@ Any variables left in the command after the prompts are inserted are replaced by
 System requirements
 -------------------
 
-`cheats` was written for `bash`.
+`cheats` was written for `bash`, and by now it contains so much bash-specific syntax that running it on other shells may require considerable porting efforts. I have tested the following shells:
 
-  * `sh`: Doesn't work at all. Even if you fix the easy stuff (`function x` -> `x()`, `[[ ... ]]` -> `[ ... ]`), it still does some weird stuff so that the filenames are messed up. Not sure why.
-  * `zsh`: *Kinda* works. I don't know the specifics of `zsh`, so I can't fix it. If you can, off to CONTRIBUTING.md with you!
+  * `sh`: Not going to happen. Sorry.
+  * `zsh`: Displaying cheats works, running them doesn’t. Completion doesn’t work either. There might be a relatively simple fix for running cheats if you know `zsh` (completion will probably need a rewrite), but I don’t. If you think you can fix it, off to CONTRIBUTING.md with you!
   * `csh`, `ksh`: Doesn't work at all. I also have no knowledge of these shells, so I don't know if it even could work.
 
 Other than your shell, the following commands are used: `printf`, `basename`, `head`, `tail`, `sed`, `grep`. For `dpkg`: `sed` and `grep` are in their own packages, the rest are part of `coreutils`.
