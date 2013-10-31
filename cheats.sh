@@ -49,13 +49,33 @@ function __print_separator_line {
 }
 
 # bash completion
+# to understand how this function manipulates variables,
+# I recommend reading the sections "Parameter Expansion" and "Arrays" of the bash manpage.
 function _cheats {
     if [[ ! -d ~/.cheats ]]; then
         return 0;
     fi
-    IFS='
-';
-    COMPREPLY=( $(ls -1 ~/.cheats | grep -e "^${COMP_WORDS[COMP_CWORD]}") );
-    unset IFS;
+    local IFS;
+    IFS=' '; local compInput="${COMP_WORDS[*]:1}"; # strip away "cheats" command
+    local compInputArray=( $compInput );
+    IFS=$'\n'; local allCheats=( $(ls -1 ~/.cheats ) );
+    j=0;
+    for (( i=0; i < ${#allCheats[*]}; i++ )); do
+        if [[ -z "${allCheats[i]/#$compInput*}" ]]; then
+            # cheat matches completion input
+            # we now need to translate 
+            # "git re" ($compInput) and
+            # "git rebase 1" ($allCheats[i])
+            # into "rebase 1"
+            IFS=' ';
+            local currentCheatArray=( ${allCheats[i]} );
+            local firstDiffIndex=0;
+            while [[ ${currentCheatArray[$firstDiffIndex]} == ${compInputArray[$firstDiffIndex]}
+                    && $firstDiffIndex < ${#currentCheatArray} ]]; do
+                firstDiffIndex=$((firstDiffIndex + 1));
+            done
+            COMPREPLY[$((j++))]="${currentCheatArray[*]:$firstDiffIndex}";
+        fi
+    done
 }
 complete -F _cheats cheats;
