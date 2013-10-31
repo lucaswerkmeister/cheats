@@ -14,7 +14,7 @@ Any contributions are welcome! When contributing code, please consider the follo
 
     for example:
     
-        add this file [instead of "added" or "adding" or "adds"]
+        add this file [instead of “added” or “adding” or “adds”]
         
         The file does this and that. Note line X: I considered using Z instead of Y, but that caused problems with ABC.
 
