@@ -11,7 +11,7 @@ function cheats {
             IFS=$(echo -en "\n\b"); # separate only by newlines in the for loop
             for file in $(IFS=' '; find -L ~/.cheats/ -name "$**" -type f | sort -n); do
                 if [[ "$visited" = "true" ]]; then
-		    __print_separator_line;
+                    __print_separator_line;
                 fi
                 tput bold; # print filename in bold
                 basename -- "$file"; # print just the filename
