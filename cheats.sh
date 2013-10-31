@@ -34,7 +34,10 @@ function __run_cheat {
     IFS='
 ';
     for line in "$(tail -n +3 -- "$file")"; do # skip the first two lines
-        [[ "$line" = [[:space:]] ]] && continue;
+        if [[ -z $STR || $STR == *[[:space:]]* ]]; then
+            # blank line
+            continue;
+        fi
         local prompt="$(echo "$line" | sed 's/[^:]*:\(.*\)/\1/')";
         local name=$(echo "$line" | sed 's/\([^:]*\):.*/\1/');
         read -p "$prompt$PS2";
