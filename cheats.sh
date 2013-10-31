@@ -34,8 +34,8 @@ function __run_cheat {
     IFS='
 ';
     for line in "$(tail -n +3 -- "$file")"; do # skip the first two lines
-        if [[ -z $line ]]; then
-            # blank line
+        if [[ -z "$line" || ${line:0:1} == '#' ]]; then
+            # blank line or comment line
             continue;
         fi
         local prompt="$(echo "$line" | sed 's/[^:]*:\(.*\)/\1/')";
