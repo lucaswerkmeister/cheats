@@ -34,7 +34,7 @@ function __run_cheat {
     IFS='
 ';
     for line in "$(tail -n +3 -- "$file")"; do # skip the first two lines
-        if [[ -z $STR || $STR == *[[:space:]]* ]]; then
+        if [[ -z $line ]]; then
             # blank line
             continue;
         fi
