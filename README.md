@@ -40,12 +40,14 @@ Each cheat has the following format:
     One-line description
     The command itself, where $variables can be defined like $this
     variablename:Prompt
+    # comment line
     other_variable:Prompt 2
     ...
 
 Any variables that you declare from the third line on will be prompted from the user and placed into the command where necessary.
-(It's completely okay if the variable isn't in the command; this is useful for "Are you sure?" type prompts where you don't care about the input, but want the user to press enter before taking action.)
+(It's completely okay if the variable isn't in the command; this is useful for „Are you sure?“ type prompts where you don't care about the input, but want the user to press enter before taking action.)
 Any variables left in the command after the prompts are inserted are replaced by bash, if they are present (things like $PWD, $PS1 etc.).
+Comment lines are only allowed in the „prompts“ section (beginning with the third line) and must start with a ‚#‘ (no preceding whitespace is allowed).
 
 System requirements
 -------------------
@@ -56,4 +58,4 @@ System requirements
   * `zsh`: Displaying cheats works, running them doesn’t. Completion doesn’t work either. There might be a relatively simple fix for running cheats if you know `zsh` (completion will probably need a rewrite), but I don’t. If you think you can fix it, off to CONTRIBUTING.md with you!
   * `csh`, `ksh`: Doesn't work at all. I also have no knowledge of these shells, so I don't know if it even could work.
 
-Other than your shell, the following commands are used: `printf`, `basename`, `head`, `tail`, `sed`, `grep`. For `dpkg`: `sed` and `grep` are in their own packages, the rest are part of `coreutils`.
+Other than your shell, the following commands are used: `printf`, `basename`, `head`, `tail`, `sed`, `tput`. For most package managers, `sed` is in package „sed“, `tput` is in package „ncurses“, and the rest are part of „coreutils“.
