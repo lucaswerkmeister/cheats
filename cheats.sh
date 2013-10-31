@@ -1,11 +1,11 @@
 function cheats {
+    local IFS;
     if [[ -f "$*" ]]; then
         __run_cheat "$*"; # mainly for debugging: absolute paths outside of ~/.cheats
     else
         IFS=' ';
         if [[ -f "$HOME/.cheats/$*" ]]; then
             __run_cheat "$HOME/.cheats/$*";
-            unset IFS;
         else
             local visited="false";
             IFS=$(echo -en "\n\b"); # separate only by newlines in the for loop
@@ -19,7 +19,6 @@ function cheats {
                 head -n 2 -- "$file"; # print the first two lines: description and command
                 visited="true";
             done
-            unset IFS;
             if [[ $visited = "false" ]]; then
                 echo "No cheats with prefix \"$*\" found in ~/.cheats";
             fi
@@ -28,6 +27,7 @@ function cheats {
 }
 
 function __run_cheat {
+    local IFS;
     local file="$*";
     head -n 2 -- "$file"; # print first and second line: description and command
     local command=$(sed -n '2p' -- "$file"); # read second line: command
