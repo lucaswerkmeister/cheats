@@ -41,7 +41,7 @@ function __run_cheat {
         local prompt="$(echo "$line" | sed 's/[^:]*:\(.*\)/\1/')";
         local name=$(echo "$line" | sed 's/\([^:]*\):.*/\1/');
         read -p "$prompt$PS2";
-        command=$(echo "$command" | sed "s\$$name$REPLY"); # replace the variable in the command, using BACKSPACE as the sed separator
+        command=$(echo "$command" | sed "s\$$name$REPLYg"); # replace the variable in the command, using BACKSPACE as the sed separator
     done
     __print_separator_line;
     eval "$command";
