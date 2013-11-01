@@ -1,0 +1,3 @@
+Compress a folder to a tar.gz file
+tar -czf "$folder.tar.gz" "$folder"
+folder:Folder to compress

@@ -1,0 +1,3 @@
+Extract a folder from a tar.gz file
+tar -xzf "$folder.tar.gz"
+folder:Folder to decompress
