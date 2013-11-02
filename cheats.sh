@@ -31,8 +31,7 @@ function __run_cheat {
     local file="$*";
     head -n 2 -- "$file"; # print first and second line: description and command
     local command=$(sed -n '2p' -- "$file"); # read second line: command
-    IFS='
-';
+    IFS=$'\n';
     for line in "$(tail -n +3 -- "$file")"; do # skip the first two lines
         if [[ -z "$line" || ${line:0:1} == '#' ]]; then
             # blank line or comment line
