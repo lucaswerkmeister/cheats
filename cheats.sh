@@ -38,10 +38,10 @@ function __run_cheat {
             # blank line or comment line
             continue;
         fi
-        local prompt="$(echo "$line" | sed 's/[^:]*:\(.*\)/\1/')";
-        local name=$(echo "$line" | sed 's/\([^:]*\):.*/\1/');
+        local name="${line/%:*}";
+        local prompt="${line/#*:}";
         read -p "$prompt$PS2";
-        command=$(echo "$command" | sed "s\$$name$REPLYg"); # replace the variable in the command, using BACKSPACE as the sed separator
+        command=${command//\$$name/$REPLY}; # replace the variable in the command (all occurrences)
     done
     __print_separator_line;
     eval "$command";
