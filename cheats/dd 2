@@ -1,0 +1,4 @@
+Burn an iso image to a disc drive
+dd if=$file of=/dev/$drive
+file:The iso filename
+drive:The disc drive (e.g. sr0)

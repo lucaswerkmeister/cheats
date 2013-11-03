@@ -1,0 +1,4 @@
+Create an iso image of a disc drive
+dd if=/dev/$drive of=$file
+drive:The disc drive (e.g. sr0)
+file:The iso filename
