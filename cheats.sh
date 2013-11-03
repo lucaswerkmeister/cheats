@@ -38,7 +38,7 @@ function __run_cheat {
             continue;
         fi
         local name="${line/%:*}";
-        local prompt="${line/#*:}";
+        local prompt="${line/#*([^:]):}";
         read -p "$prompt$PS2";
         command=${command//\$$name/$REPLY}; # replace the variable in the command (all occurrences)
     done
