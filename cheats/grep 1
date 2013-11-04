@@ -1,0 +1,4 @@
+Recursively search a directory for a string
+grep -r --binary-files=without-match "$string" "$dir"
+string:Search string
+dir:Directory
