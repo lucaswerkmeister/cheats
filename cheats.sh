@@ -8,7 +8,7 @@ function cheats {
             __run_cheat "$HOME/.cheats/$*";
         else
             local visited="false";
-            IFS=$(echo -en "\n\b"); # separate only by newlines in the for loop
+            IFS=$'\n'; # separate only by newlines in the for loop
             for file in $(IFS=' '; find -L ~/.cheats/ -name "$**" -type f | sort -n); do
                 if [[ "$visited" = "true" ]]; then
                     __print_separator_line;
