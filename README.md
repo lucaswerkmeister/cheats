@@ -57,7 +57,7 @@ System requirements
 `cheats` was written for `bash`, and by now it contains so much bash-specific syntax that running it on other shells may require considerable porting efforts. I have tested the following shells:
 
   * `sh`: Not going to happen. Sorry.
-  * `zsh`: Displaying cheats works, running them doesn’t. Completion doesn’t work either. There might be a relatively simple fix for running cheats if you know `zsh` (completion will probably need a rewrite), but I don’t. If you think you can fix it, off to CONTRIBUTING.md with you!
+  * `zsh`: Displaying cheats works, running them only works if they don’t contain variables. Completion doesn’t work either. There might be a relatively simple fix for running cheats if you know `zsh` (completion will probably need a rewrite), but I don’t. If you think you can fix it, off to CONTRIBUTING.md with you!
   * `csh`, `ksh`: Doesn't work at all. I also have no knowledge of these shells, so I don't know if it even could work.
 
 Other than your shell, the following commands are used: `printf`, `basename`, `head`, `tail`, `sed`, `tput`. For most package managers, `sed` is in package “sed”, `tput` is in package “ncurses”, and the rest are part of “coreutils”.
