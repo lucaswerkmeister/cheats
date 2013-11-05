@@ -8,4 +8,6 @@ fi
 mkdir -p ~/bin
 cp cheats.sh ~/bin
 cp -r cheats ~/.cheats
-echo -e "\n\nsource ~/bin/cheats.sh" >> ~/.bashrc
+if ! grep -q "cheats.sh" ~/.bashrc; then
+    echo -e "\n\nsource ~/bin/cheats.sh" >> ~/.bashrc
+fi
