@@ -1,3 +1,3 @@
 Search for cheats
-( IFS=$'\n'; for line in $(grep -lrm1 "$search" ~/.cheats); do basename $line; done; )
+( IFS=$'\n'; for line in $(grep -lirm1 "$search" ~/.cheats); do basename $line; done; )
 search:Search term
