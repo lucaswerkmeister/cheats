@@ -9,7 +9,9 @@ This is intended mainly for command that you use frequently, but not frequently 
 Installation
 ------------
 
-Put `cheats.sh` somewhere and source it on bash startup (for example, `echo -en '\n\n' | cat - cheats.sh >> ~/.bashrc`), then copy the cheats folder into your home folder (`cp -r cheats ~/.cheats`).
+* Automatic installation: Run `install.sh`.
+* Manual installation: Put `cheats.sh` somewhere and source it on bash startup (for example, `echo -en '\n\n' | cat - cheats.sh >> ~/.bashrc`), then copy the cheats folder into your home folder (`cp -r cheats ~/.cheats`).
+* To update an existing installation, you can run `install.sh` again or manually update `cheats.sh` and the `.cheats` folder.
 
 Usage
 -----
