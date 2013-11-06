@@ -1,0 +1,3 @@
+Interactively add parts of a file
+git add -p $file
+file:The file
