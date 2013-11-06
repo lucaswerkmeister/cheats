@@ -38,6 +38,7 @@ function __run_cheat {
             continue;
         fi
         local name="${line/%:*}";
+        shopt -s extglob; # enable extended globbing for the *(...) pattern below
         local prompt="${line/#*([^:]):}";
         read -p "$prompt$PS2";
         command=${command//\$$name/$REPLY}; # replace the variable in the command (all occurrences)
