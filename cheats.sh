@@ -78,6 +78,9 @@ if shopt -q progcomp 2> /dev/null; then
 			&& $firstDiffIndex < ${#currentCheatArray} ]]; do
                     ((firstDiffIndex++));
 		done
+                if [[ $COMP_CWORD == $firstDiffIndex ]]; then
+                    ((firstDiffIndex--)); # don’t override the current word; see #3
+                fi
 		COMPREPLY[$((j++))]="${currentCheatArray[*]:$firstDiffIndex}";
             fi
 	done
