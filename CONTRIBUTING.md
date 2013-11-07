@@ -20,3 +20,10 @@ Any contributions are welcome! When contributing code, please consider the follo
 
     as for the length of the first line: if possible, use <= 50 characters (if you're using `vim`, just keep it yellow)
   * use common sense (read: I can't be bothered to write a full guide)
+
+Legal thingies
+--------------
+
+The content of this repository is released under the MIT License as provided in the LICENSE file that accompanied this code.
+
+By submitting a "pull request" or otherwise contributing to this repository, you agree to license your contribution under the license mentioned above.
