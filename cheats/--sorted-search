@@ -1,0 +1,11 @@
+Search for cheats, sort the results by relevance
+( IFS=$'\n'; for line in $(grep -irc "$search" ~/.cheats | sed 's/\([^:]*\):\(.*\)/\2:\1/' | grep -ve '^0.*' | sort -nr | sed 's/[^:]*:\(.*\)/\1/'); do basename "$line"; done )
+search:Search term
+# explanation of command:
+#  grep: count occurrences of “$search” per file – output is in format “$HOME/.cheats/cheat name:count”
+#  sed: swap output and count – output is in format “count:$HOME/.cheats/cheat name”
+#  grep: remove files with 0 occurrences
+#  sort: sort in reverse numerical order
+#  sed: remove count – output is in format “$HOME/.cheats/cheat name“
+#  basename: remove path – output is in format “cheat name”
+# the for loop is necessary because basename doesn’t read from stdin, and I couldn’t get the newlines and spaces to work with xargs
