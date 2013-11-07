@@ -56,34 +56,34 @@ if shopt -q progcomp 2> /dev/null; then
     # to understand how this function manipulates variables,
     # I recommend reading the sections "Parameter Expansion" and "Arrays" of the bash manpage.
     function _cheats {
-	if [[ ! -d ~/.cheats ]]; then
+        if [[ ! -d ~/.cheats ]]; then
             return 0;
-	fi
-	local IFS;
-	IFS=' '; local compInput="${COMP_WORDS[*]:1}"; # strip away "cheats" command
-	local compInputArray=( $compInput );
-	IFS=$'\n'; local allCheats=( $(ls -1 ~/.cheats ) );
-	j=0;
-	for (( i=0; i < ${#allCheats[*]}; i++ )); do
+        fi
+        local IFS;
+        IFS=' '; local compInput="${COMP_WORDS[*]:1}"; # strip away "cheats" command
+        local compInputArray=( $compInput );
+        IFS=$'\n'; local allCheats=( $(ls -1 ~/.cheats ) );
+        j=0;
+        for (( i=0; i < ${#allCheats[*]}; i++ )); do
             if [[ -z "${allCheats[i]/#$compInput*}" ]]; then
                 # cheat matches completion input
                 # we now need to translate 
                 # "git re" ($compInput) and
                 # "git rebase 1" ($allCheats[i])
                 # into "rebase 1"
-		IFS=' ';
-		local currentCheatArray=( ${allCheats[i]} );
-		local firstDiffIndex=0;
-		while [[ ${currentCheatArray[$firstDiffIndex]} == ${compInputArray[$firstDiffIndex]}
-			&& $firstDiffIndex < ${#currentCheatArray} ]]; do
+                IFS=' ';
+                local currentCheatArray=( ${allCheats[i]} );
+                local firstDiffIndex=0;
+                while [[ ${currentCheatArray[$firstDiffIndex]} == ${compInputArray[$firstDiffIndex]}
+                        && $firstDiffIndex < ${#currentCheatArray} ]]; do
                     ((firstDiffIndex++));
-		done
+                done
                 if [[ $COMP_CWORD == $firstDiffIndex ]]; then
                     ((firstDiffIndex--)); # don’t override the current word; see #3
                 fi
-		COMPREPLY[$((j++))]="${currentCheatArray[*]:$firstDiffIndex}";
+                COMPREPLY[$((j++))]="${currentCheatArray[*]:$firstDiffIndex}";
             fi
-	done
+        done
     }
     complete -F _cheats cheats;
 fi
