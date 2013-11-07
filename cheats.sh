@@ -76,7 +76,7 @@ if shopt -q progcomp 2> /dev/null; then
 		local firstDiffIndex=0;
 		while [[ ${currentCheatArray[$firstDiffIndex]} == ${compInputArray[$firstDiffIndex]}
 			&& $firstDiffIndex < ${#currentCheatArray} ]]; do
-                    firstDiffIndex=$((firstDiffIndex + 1));
+                    ((firstDiffIndex++));
 		done
 		COMPREPLY[$((j++))]="${currentCheatArray[*]:$firstDiffIndex}";
             fi
