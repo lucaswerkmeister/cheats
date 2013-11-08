@@ -1,0 +1,5 @@
+Do something with each file whose name contains a certain term
+find "$folder" -iname '*$term*' -exec $command \;
+folder:Search folder
+term:Search term
+command:Command, use '{}' to refer to filename
