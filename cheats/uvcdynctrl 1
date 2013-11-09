@@ -1,0 +1,5 @@
+Turn off webcam autofocus
+uvcdynctrl -v -d video0 --set='Focus, Auto' 0
+# Note: uvcdynctrl is not installed by default on most distros
+# Source: http://ubuntuforums.org/showthread.php?t=1930952
+
