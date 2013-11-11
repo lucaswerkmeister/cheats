@@ -1,0 +1,4 @@
+Find out which package contains a file
+apt-file search "$file"
+file:File
+# tags: dpkg, apt-get
