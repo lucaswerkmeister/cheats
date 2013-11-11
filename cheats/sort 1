@@ -1,0 +1,4 @@
+Sort lines of a file numerically
+sort -n "$infile" > "$outfile"
+infile:Input file
+outfile:Output file (or /dev/stdout for display)
