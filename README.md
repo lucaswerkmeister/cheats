@@ -61,3 +61,10 @@ System requirements
   * `csh`, `ksh`: Doesn't work at all. I also have no knowledge of these shells, so I don't know if it even could work.
 
 Other than your shell, the following commands are used: `printf`, `basename`, `head`, `tail`, `sed`, `tput`. For most package managers, `sed` is in package “sed”, `tput` is in package “ncurses”, and the rest are part of “coreutils”.
+
+License
+-------
+
+The content of this repository is released under the MIT License as provided in the LICENSE file that accompanied this code.
+
+By submitting a "pull request" or otherwise contributing to this repository, you agree to license your contribution under the license mentioned above.
