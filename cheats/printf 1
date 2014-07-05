@@ -1,0 +1,5 @@
+Print a line of spaces as wide as the screen
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" ''
+# If you’re not sure if your shell will have the COLUMNS variable set,
+# you can use ${COLUMNS:-$(tput cols)} instead (but this is a very bash-
+# specific syntax), or just $(tput cols) (which is always slower).

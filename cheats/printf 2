@@ -1,0 +1,6 @@
+Print a line of characters as wide as the screen, e. g. as a separator line
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "$char"
+char:The printed character, for example '-'
+# If you’re not sure if your shell will have the COLUMNS variable set,
+# you can use ${COLUMNS:-$(tput cols)} instead (but this is a very bash-
+# specific syntax), or just $(tput cols) (which is always slower).
