@@ -1,0 +1,6 @@
+Update a single package
+time sudo emerge -u1 $package
+package:The package to update
+# time: How long did the update take? We’re curious.
+# -u: --update
+# -1: --oneshot, don’t record in world file. You don’t want every library cluttering the world file just because you manually updated it once!
