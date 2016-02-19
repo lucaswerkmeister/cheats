@@ -1,0 +1,3 @@
+Search for packages
+pacman -Ss $term
+term:Search term

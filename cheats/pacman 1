@@ -1,0 +1,6 @@
+Perform a full update+upgrade
+sudo pacman -Syu
+# -y, --refresh: update package databases
+# -u, --sysupgrade: upgrade all packages
+# note: most AUR helpers, like yaourt or pacaur,
+# will auto-sudo, but pacman itself does not.

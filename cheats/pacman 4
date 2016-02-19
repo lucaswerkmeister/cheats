@@ -1,0 +1,3 @@
+Find package that owns/contains a particular file
+pacman -Qo "$file"
+file:The file

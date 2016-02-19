@@ -1,0 +1,5 @@
+Install one or more packages
+sudo pacman -S $package
+package:The package(s)
+# note: most AUR helpers, like yaourt or pacaur,
+# will auto-sudo, but pacman itself does not.
