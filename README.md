@@ -1,7 +1,7 @@
 cheats
 ======
 
-`cheats` is a command line utility that allows you to define interactive cheat cheets for the command line.
+`cheats` is a command line utility that allows you to define interactive cheat sheets for the command line.
 This is intended mainly for command that you use frequently, but not frequently enough to remember them.
 
 `cheats` was inspired by [`cheat`](https://github.com/chrisallenlane/cheat) by chrisallenlane, although it contains none of its code. There is also a [bash reimplementation of `cheat`](https://github.com/jahendrie/cheat) by jahendrie.
