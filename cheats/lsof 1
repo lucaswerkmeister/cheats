@@ -1,0 +1,17 @@
+List programs that have deleted files opened and may need to be restarted
+sudo lsof -n +c 0 | grep DEL | grep -vF $'/dev/\n/SYSV\n/run/' | cut -d' ' -f1 | sort -u | sed 's/\\x20/ /g'
+# lsof: list programs with open files
+#   -n: don’t look up host names for sockets or other network connections
+#   +c 0: don’t truncate process names
+# grep DEL: select files that lsof has marked DELeted
+# grep -vF …: strip out some common uninteresting files: /dev/zero, /dev/shm/…, /SYSV…, /run/…
+# cut -d' ' -f1: select the first space-separated field (process name)
+# sort -u: don’t show repeated names several times
+# sed …: unescape spaces
+#
+# This shows files that were opened by a process and then deleted or replaced.
+# This can indicate that a library that a process uses was updated (file was replaced),
+# and that the process should be restarted to use the new version of the library.
+# (Note: on a desktop system, you can get lots of garbage –
+# dconf, glib schemas and fontconfig are common culprits.
+# This is more useful on a server.)
