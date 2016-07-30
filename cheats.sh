@@ -14,7 +14,7 @@ function cheats {
                     __print_separator_line;
                 fi
                 tput bold; # print filename in bold
-                basename -- "$file"; # print just the filename
+                printf '%s\n' "${file##*/}" # print filename without other path parts
                 tput sgr0; # reset
                 head -n 2 -- "$file"; # print the first two lines: description and command
                 visited="true";
