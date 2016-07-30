@@ -52,7 +52,8 @@ function __run_cheat {
 }
 
 function __print_separator_line {
-    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '-'; # print a separator line with the width of the console
+    local cols=${COLUMNS:-$(tput cols)};
+    for ((i=0; i<cols; i++)); do printf -; done # print a separator line with the width of the console
 }
 
 if shopt -q progcomp 2> /dev/null; then
