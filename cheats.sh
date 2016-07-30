@@ -16,7 +16,12 @@ function cheats {
                 tput bold; # print filename in bold
                 printf '%s\n' "${file##*/}" # print filename without other path parts
                 tput sgr0; # reset
-                head -n 2 -- "$file"; # print the first two lines: description and command
+                { # print the first two lines: description and command
+                    local description command;
+                    IFS= read description;
+                    IFS= read command;
+                    printf '%s\n%s\n' "$description" "$command";
+                } < "$file"
                 visited="true";
             done
             if [[ $visited = "false" ]]; then

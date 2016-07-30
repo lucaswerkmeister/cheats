@@ -61,7 +61,7 @@ System requirements
   * `zsh`: Displaying cheats works, running them only works if they don’t contain variables. Completion doesn’t work either. There might be a relatively simple fix for running cheats if you know `zsh` (completion will probably need a rewrite), but I don’t. If you think you can fix it, off to CONTRIBUTING.md with you!
   * `csh`, `ksh`: Doesn't work at all. I also have no knowledge of these shells, so I don't know if it even could work.
 
-Other than your shell, the following commands are used: `printf`, `head`, `tput`. For most package managers, `tput` is in package “ncurses”, and the rest are part of “coreutils”.
+Apart from Bash features and builtins, only the `tput` external command is used. Most package managers include it in the “ncurses” package.
 
 License
 -------
