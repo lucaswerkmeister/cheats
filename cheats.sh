@@ -62,28 +62,29 @@ if shopt -q progcomp 2> /dev/null; then
         local IFS;
         IFS=' '; local compInput="${COMP_WORDS[*]:1}"; # strip away "cheats" command
         local compInputArray=( $compInput );
-        IFS=$'\n'; local allCheats=( $(ls -1 ~/.cheats ) );
+        IFS=$'\n'; local allCheats=(~/.cheats/*);
         j=0;
-        for (( i=0; i < ${#allCheats[*]}; i++ )); do
-            if [[ -z "${allCheats[i]/#$compInput*}" ]]; then
-                # cheat matches completion input
-                # we now need to translate 
-                # "git re" ($compInput) and
-                # "git rebase 1" ($allCheats[i])
-                # into "rebase 1"
-                IFS=' ';
-                local currentCheatArray=( ${allCheats[i]} );
-                local firstDiffIndex=0;
-                while [[ ${currentCheatArray[$firstDiffIndex]} == ${compInputArray[$firstDiffIndex]}
-                        && $firstDiffIndex < ${#currentCheatArray} ]]; do
-                    ((firstDiffIndex++));
-                done
-                if [[ $COMP_CWORD == $firstDiffIndex ]]; then
-                    ((firstDiffIndex--)); # don’t override the current word; see #3
-                fi
-                COMPREPLY[$((j++))]="${currentCheatArray[*]:$firstDiffIndex}";
+        shopt -q nullglob; hadNullglob=$?
+        shopt -s nullglob
+        for cheat in ~/.cheats/"$compInput"*; do
+            # cheat matches completion input
+            # we now need to translate
+            # "git re" ($compInput) and
+            # "~/.cheats/git rebase 1" ($cheat)
+            # into "rebase 1"
+            IFS=' ';
+            local currentCheatArray=( ${cheat#~/.cheats/} );
+            local firstDiffIndex=0;
+            while [[ ${currentCheatArray[$firstDiffIndex]} == ${compInputArray[$firstDiffIndex]}
+                            && $firstDiffIndex < ${#currentCheatArray} ]]; do
+                ((firstDiffIndex++));
+            done
+            if [[ $COMP_CWORD == $firstDiffIndex ]]; then
+                ((firstDiffIndex--)); # don’t override the current word; see #3
             fi
+            COMPREPLY[$((j++))]="${currentCheatArray[*]:$firstDiffIndex}";
         done
+        if ((hadNullglob==0)); then shopt -u nullglob; fi
     }
     complete -F _cheats cheats;
 fi
