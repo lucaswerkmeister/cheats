@@ -27,7 +27,7 @@ function cheats {
 }
 
 function __run_cheat {
-    local file="$*";
+    local file="$*" description command;
     exec 3< "$file";
     IFS= read <&3 -r description;
     IFS= read <&3 -r command;
