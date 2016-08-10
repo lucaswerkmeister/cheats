@@ -1,0 +1,5 @@
+Scale to max dimension,keep aspect ratio
+convert "$original_file" -resize "$max_dim" "$new_file"
+original_file:original file name with extension
+new_file:new file name with (new) extension
+max_dim:max image size in pixel
