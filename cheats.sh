@@ -32,23 +32,24 @@ function cheats {
 }
 
 function __run_cheat {
-    local file="$*" description command;
-    exec 3< "$file";
-    IFS= read <&3 -r description;
-    IFS= read <&3 -r command;
-    printf '%s\n%s\n' "$description" "$command";
-    while IFS= read <&3 -r line; do
-        if [[ -z "$line" || ${line:0:1} == '#' ]]; then
+    # all variables start with a double underscore to avoid collisions with cheat variables
+    # (which are placed into the current environment as local variables)
+    local __description __command __line __input;
+    exec 3< "$*";
+    IFS= read <&3 -r __description;
+    IFS= read <&3 -r __command;
+    printf '%s\n%s\n' "$__description" "$__command";
+    while IFS= read <&3 -r __line; do
+        if [[ -z "$__line" || ${__line:0:1} == '#' ]]; then
             # blank line or comment line
             continue;
         fi
-        local name="${line%%:*}";
-        local prompt="${line##*:}";
-        read -e -p "$prompt$PS2";
-        command=${command//\$$name/$REPLY}; # replace the variable in the command (all occurrences)
+        # name is ${__line%%:*}, prompt is ${__line##*:}
+        read -e -p "${__line##*:}$PS2" __input;
+        local ${__line%%:*}="$__input";
     done
     __print_separator_line;
-    eval "$command";
+    eval "$__command";
 }
 
 function __print_separator_line {
