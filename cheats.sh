@@ -49,6 +49,7 @@ function __run_cheat {
         local ${__line%%:*}="$__input";
     done
     __print_separator_line;
+    history -s "$__command";
     eval "$__command";
 }
 
