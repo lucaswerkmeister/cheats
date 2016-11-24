@@ -1,0 +1,3 @@
+Serve a local directory via HTTP on port 8000
+(cd -- "$dir" && python3 -m http.server)
+dir:The directory

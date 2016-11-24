@@ -1,0 +1,2 @@
+Serve the current directory via HTTP on port 8000
+python3 -m http.server # python2 -m SimpleHTTPServer
