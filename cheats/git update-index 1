@@ -1,0 +1,3 @@
+Pretend a file has no local changes
+git update-index --assume-unchanged "$file"
+file:The file
