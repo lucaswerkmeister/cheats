@@ -1,0 +1,2 @@
+Refresh / update cached user credentials, ensuring that immediately following sudo calls don’t need to ask for your password
+sudo -v
