@@ -1,10 +1,12 @@
 function cheats {
     local IFS;
     if [[ -f "$*" ]]; then
+        history -s "cheats $*";
         __run_cheat "$*"; # mainly for debugging: absolute paths outside of ~/.cheats
     else
         IFS=' ';
         if [[ -f "$HOME/.cheats/$*" ]]; then
+            history -s "cheats $*";
             __run_cheat "$HOME/.cheats/$*";
         else
             local visited="false";
