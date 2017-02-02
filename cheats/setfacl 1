@@ -1,0 +1,4 @@
+Grant an additional user permission to read a file
+setfacl -m user:$user:r -- "$file"
+user:The user
+file:The file
