@@ -1,0 +1,3 @@
+Turn the clipboard contents into a QR code (e. g. to transfer a password to a smartphone)
+xclip -selection c -o | qrencode -t UTF8
+# tags: password
