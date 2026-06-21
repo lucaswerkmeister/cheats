@@ -1,2 +1,2 @@
 Print the credentials of the current WiFi connection
-nmcli --show-secrets --mode tabular --terse --fields 802-11-wireless.ssid,802-11-wireless-security.psk connection show $(nmcli --terse --fields UUID connection show --active)
+nmcli --show-secrets --mode tabular --terse --fields 802-11-wireless.ssid,802-11-wireless-security.psk connection show $(nmcli --terse --fields type,UUID connection show --active | awk -F: '$1=="802-11-wireless"{print $2}')
